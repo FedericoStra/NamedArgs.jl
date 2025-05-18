@@ -1,0 +1,7 @@
+name = "NamedArgs"
+uuid = "860fdae3-ddf8-4d0b-83dd-ab7799bd42fe"
+authors = ["Federico Stra <stra.federico@gmail.com> and contributors"]
+version = "0.0.0"
+
+[compat]
+julia = "1.9"
