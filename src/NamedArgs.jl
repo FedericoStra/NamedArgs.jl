@@ -6,6 +6,8 @@ export @na
     @na f(arg=val, ...; kwargs)
 
 Allow naming arguments in a function call.
+
+See the [module](@ref NamedArgs) documentation.
 """
 macro na(ex::Expr)
     # Sanity checks about the macro call.

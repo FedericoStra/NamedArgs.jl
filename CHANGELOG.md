@@ -24,6 +24,7 @@ Initial implementation.
 - Macro `@na`.
 - Tests.
 - Benchmarks.
+- Documentation.
 
 ## [0.0.0]
 
