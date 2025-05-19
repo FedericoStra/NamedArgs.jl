@@ -15,8 +15,17 @@ Types of changes:
 - `Security` in case of vulnerabilities.
 -->
 
+## [Unreleased]
+
+Initial implementation.
+
+### Added
+
+- Macro `@na`.
+
 ## [0.0.0]
 
 Empty project.
 
+[Unreleased]: https://github.com/FedericoStra/NamedArgs.jl/compare/v0.0.0...HEAD
 [0.0.0]: https://github.com/FedericoStra/NamedArgs.jl/releases/tag/v0.0.0
