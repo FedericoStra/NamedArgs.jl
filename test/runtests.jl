@@ -1,6 +1,7 @@
-using NamedArgs
-using Test
+using Test, SafeTestsets, TestSetExtensions
 
-@testset "NamedArgs.jl" begin
-    # Write your tests here.
+@testset ExtendedTestSet "All tests" begin
+    @testset "NamedArgs.jl" begin
+        @safetestset "simple" include("simple.jl")
+    end
 end

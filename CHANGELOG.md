@@ -22,6 +22,7 @@ Initial implementation.
 ### Added
 
 - Macro `@na`.
+- Tests.
 
 ## [0.0.0]
 
