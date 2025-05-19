@@ -28,6 +28,17 @@ end
     @test "x_3.14" == @na foo(n=3.14, c='x';)
 end
 
+@testset "expressions" begin
+    @test 145.14 == @na foo(  6*7,   3+0.14;)
+    @test 145.14 == @na foo(n=6*7,   3+0.14;)
+    @test 145.14 == @na foo(  6*7, r=3+0.14;)
+    @test 145.14 == @na foo(n=6*7, r=3+0.14;)
+    @test 245.14 == @na foo(  6*7,   3+0.14; offset=100*2)
+    @test 245.14 == @na foo(n=6*7,   3+0.14; offset=100*2)
+    @test 245.14 == @na foo(  6*7, r=3+0.14; offset=100*2)
+    @test 245.14 == @na foo(n=6*7, r=3+0.14; offset=100*2)
+end
+
 @testset "wrong argument name" begin
     @test_throws "ArgumentError: expected argument name `c`, got `r`." begin
         for v in (3.14, 'x')
