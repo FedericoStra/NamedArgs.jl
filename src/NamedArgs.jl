@@ -77,12 +77,12 @@ macro na(ex::Expr)
         end
     end
 
-    world_counters = gensym("world_counters")
-    __module__.eval(:(const $(world_counters) = Dict{Any,UInt}()))
+    last_check = gensym("last_check")
+    __module__.eval(:(const $(last_check) = Dict{Any,UInt}()))
 
-    # Transform `f(args...)` to `dispatch(f, world_counters, Val(tuple(names...)), args...)`.
+    # Transform `f(args...)` to `dispatch(f, last_check, Val(tuple(names...)), args...)`.
     insert!(ex.args, 1, :(NamedArgs.dispatch))
-    insert!(ex.args, 3, world_counters)
+    insert!(ex.args, 3, last_check)
     insert!(ex.args, 4, Val(tuple(names...)))
 
     # Put back the keyword arguments in second position.
@@ -92,12 +92,12 @@ macro na(ex::Expr)
     return esc(ex)
 end
 
-function dispatch(f::Function, world_counters::Dict{Any,UInt}, Val_names::Val{names}, args...; kwargs...) where names
+function dispatch(f::Function, last_check::Dict{Any,UInt}, Val_names::Val{names}, args...; kwargs...) where names
     types = Tuple{Core.Typeof.(args)...}
     world_counter = Base.get_world_counter()
-    if get(world_counters, types, UInt(0)) < world_counter
+    if get(last_check, types, UInt(0)) < world_counter
         check_names(f, Val_names, types)
-        world_counters[types] = world_counter
+        last_check[types] = world_counter
     end
     f(args...; kwargs...)
 end
