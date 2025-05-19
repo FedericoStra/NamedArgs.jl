@@ -8,6 +8,39 @@ export @na
 Allow naming arguments in a function call.
 
 See the [module](@ref NamedArgs) documentation.
+
+# Examples
+
+```jldoctest example
+julia> add(x, y; offset=100) = x + y + offset
+add (generic function with 1 method)
+
+julia> @na add(x=40, y=2;)
+142
+
+julia> @na add(40, y=2; offset=300) # can omit some names
+342
+
+julia> @na add(x=4*10, y=2; offset=300) # can use expressions as arguments
+342
+```
+
+The following invocations are invalid.
+
+```jldoctest example
+julia> @na add(40, 2) # cannot omit semicolon
+ERROR: LoadError: ArgumentError: the function call does not have a semicolon.
+[...]
+
+julia> @na add(y=2, x=40;) # cannot swap arguments
+ERROR: ArgumentError: expected argument name `x`, got `y`.
+[...]
+
+julia> @na add(x=40; y=2, offset=200) # must correctly separate args and kwargs
+ERROR: Calling invoke(f, t, args...) would throw:
+MethodError: no method matching invoke add(::Int64)
+[...]
+```
 """
 macro na(ex::Expr)
     # Sanity checks about the macro call.
