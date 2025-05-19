@@ -13,12 +13,14 @@ foo(n::Number, c::Char) = "$(c)_$(n)"
     @test 245.14 == @na foo(  42, r=3.14; offset=200)
     @test 245.14 == @na foo(n=42, r=3.14; offset=200)
 end
+
 @testset "Int<:Number, Char" begin
     @test "x_314" == @na foo(  314,   'x';)
     @test "x_314" == @na foo(n=314,   'x';)
     @test "x_314" == @na foo(  314, c='x';)
     @test "x_314" == @na foo(n=314, c='x';)
 end
+
 @testset "Float64<:Number, Char" begin
     @test "x_3.14" == @na foo(  3.14,   'x';)
     @test "x_3.14" == @na foo(n=3.14,   'x';)
@@ -26,7 +28,7 @@ end
     @test "x_3.14" == @na foo(n=3.14, c='x';)
 end
 
-@testset "invalid" begin
+@testset "wrong argument name" begin
     @test_throws "ArgumentError: expected argument name `c`, got `r`." begin
         for v in (3.14, 'x')
             @na foo(n=42, r=v;)

@@ -35,7 +35,7 @@ macro na(ex::Expr)
                 ex.args[i] = arg.args[2]
                 push!(names, arg.args[1])
             else
-                throw(ArgumentError("the argument should be a symbol, got $(repr(arg.args[1]))."))
+                throw(ArgumentError("the argument name should be a symbol, got $(repr(arg.args[1]))."))
             end
         else
             push!(names, nothing)

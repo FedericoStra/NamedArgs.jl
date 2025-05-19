@@ -7,6 +7,7 @@ const SKIP_BENCHMARKS = true
 
     @testset "NamedArgs.jl" begin
         @safetestset "simple" include("simple.jl")
+        @safetestset "invalid" include("invalid.jl")
     end
 
     @testset "benches" begin
