@@ -15,7 +15,7 @@ Types of changes:
 - `Security` in case of vulnerabilities.
 -->
 
-[Unreleased]
+[0.1.1]
 
 ### Added
 
@@ -37,6 +37,6 @@ Initial implementation.
 
 Empty project.
 
-[Unreleased]: https://github.com/FedericoStra/NamedArgs.jl/compare/v0.1.0...HEAD
+[0.1.1]: https://github.com/FedericoStra/NamedArgs.jl/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/FedericoStra/NamedArgs.jl/compare/v0.0.0...v0.1.0
 [0.0.0]: https://github.com/FedericoStra/NamedArgs.jl/releases/tag/v0.0.0
