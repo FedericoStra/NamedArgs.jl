@@ -20,6 +20,7 @@ Types of changes:
 ### Added
 
 - Examples in docstring.
+- Caching to improve performance.
 
 ## [0.1.0]
 
